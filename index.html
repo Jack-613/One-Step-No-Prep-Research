@@ -60,5 +60,160 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
+
+  <!-- JS-freier Impressum-Button + Popup -->
+<style>
+  .impressum-btn {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 9999;
+    padding: 0.55rem 0.8rem;
+    font-size: 14px;
+    line-height: 1;
+    color: #fff;
+    background: #666;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    user-select: none;
+  }
+  .impressum-btn:hover,
+  .impressum-btn:focus { background:#555; outline: none; }
+
+  /* Modal-Overlay (standard: versteckt) */
+  .impressum-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.45);
+    padding: 1rem;
+  }
+
+  /* Wenn Checkbox gecheckt ist => zeigen */
+  #impressumToggle:checked ~ .impressum-modal { display: flex; }
+
+  .impressum-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    max-height: 80vh;
+    overflow: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+
+  .impressum-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .9rem 1.1rem;
+    border-bottom: 1px solid #eee;
+  }
+  .impressum-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .impressum-close {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: .2rem .4rem;
+    user-select: none;
+  }
+
+  .impressum-body {
+    padding: 1rem 1.1rem 1.2rem;
+    font-size: 15px;
+    color: #222;
+  }
+  .impressum-body address {
+    font-style: normal;
+    white-space: pre-line;
+  }
+  .impressum-body a { color: inherit; text-decoration: underline; }
+
+  /* Klick auf den abgedunkelten Hintergrund schließt ebenfalls */
+  .impressum-backdrop {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (max-width: 480px) {
+    .impressum-btn {
+      left: .8rem;
+      bottom: .8rem;
+      padding: .5rem .7rem;
+      font-size: 13px;
+    }
+  }
+</style>
+
+<!-- Button (Label schaltet die Checkbox) -->
+<label for="impressumToggle" class="impressum-btn">Impressum</label>
+
+<!-- Versteckte Toggle-Checkbox -->
+<input type="checkbox" id="impressumToggle" hidden>
+
+<!-- Modal -->
+<div class="impressum-modal" aria-hidden="true">
+  <!-- Klick auf Overlay schließt -->
+  <label for="impressumToggle" class="impressum-backdrop"></label>
+
+  <div class="impressum-dialog" role="dialog" aria-labelledby="impressumTitle">
+    <div class="impressum-header">
+      <h2 class="impressum-title" id="impressumTitle">Imprint</h2>
+      <!-- Schließen -->
+      <label for="impressumToggle" class="impressum-close" aria-label="Popup schließen">×</label>
+    </div>
+    <div class="impressum-body">
+      <address>
+VITA Zahnfabrik
+H. Rauter GmbH &amp; Co. KG
+Spitalgasse 3
+79713 Bad Säckingen
+
+Telephone: +49 (0)7761-56 20
+Telefax: +49 (0)7761-56 22 99
+E-Mail: <a href="mailto:info@vita-zahnfabrik.com">info@vita-zahnfabrik.com</a>
+Internet: <a href="https://www.vita-zahnfabrik.com" target="_blank" rel="noopener">www.vita-zahnfabrik.com</a>
+
+Domicile of the limited partnership: Bad Säckingen
+Court of registration: Freiburg i. Br.
+Registration number: HRA 630648
+
+General partner: Rauter Beteiligungsgesellschaft mit beschränkter Haftung (Rauter associated company with limited liability), Bad Säckingen, Germany
+
+Court of registration: Freiburg i. Br.
+Registration number: HRB 630268
+
+Managing director:
+Dr. Emanuel Rauter
+
+VAT identification number as per § 27a of the Value-Added Tax Act (UStG): DE 142697558
+
+VITA-Research-Viz =&gt; Idea - Concept - Realization by Jacob Brief
+      </address>
+    </div>
+  </div>
+</div>
+
+
+
+
+   <!-- Elfsight Website Translator | Untitled Website Translator Copy de -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-2a1f8e7a-e599-4048-88c9-c8efc275d3e5" data-elfsight-app-lazy></div>
+
 </html>
